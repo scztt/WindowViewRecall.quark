@@ -4,7 +4,7 @@ WindowViewRecall {
 	*initClass {
 		Archive.read();
 		updatePosition = Collapse({
-			|bounds ...addr|
+			|bounds, addr|
 			WindowViewRecall.rememberPosition(bounds, *addr);
 		}, 1);
 	}
@@ -19,14 +19,12 @@ WindowViewRecall {
 		var viewFunc = {
 			|v|
 			var bounds = v.bounds;
-			bounds.postln;
-			if (bounds.isKindOf(Rect)) { updatePosition.(bounds, *addr) }
+			if (bounds.isKindOf(Rect)) { updatePosition.(bounds, addr) }
 		};
 		var windowFunc = {
 			|w|
 			var bounds = w.findWindow.bounds;
-			bounds.postln;
-			if (bounds.isKindOf(Rect)) { updatePosition.(bounds, *addr) }
+			if (bounds.isKindOf(Rect)) { updatePosition.(bounds, addr) }
 		};
 
 		if (that.isKindOf(Window)) {
@@ -42,7 +40,6 @@ WindowViewRecall {
 
 	*rememberPosition {
 		| bounds ...addr |
-		[bounds, addr].postln;
 		Archive.global.put(*([\WindowPositions] ++ addr ++ [ bounds ]));
 		Archive.write();
 	}
