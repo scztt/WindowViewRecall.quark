@@ -18,13 +18,19 @@ WindowViewRecall {
 
 		var viewFunc = {
 			|v|
-			var bounds = v.bounds;
-			if (bounds.isKindOf(Rect)) { updatePosition.(bounds, addr) }
+			var bounds;
+			if (v.isClosed.not) {
+				bounds = v.bounds;
+				if (bounds.isKindOf(Rect)) { updatePosition.(bounds, addr) }
+			}
 		};
 		var windowFunc = {
 			|w|
-			var bounds = w.findWindow.bounds;
-			if (bounds.isKindOf(Rect)) { updatePosition.(bounds, addr) }
+			var bounds;
+			if (w.isClosed.not) {
+				bounds = w.findWindow.bounds;
+				if (bounds.isKindOf(Rect)) { updatePosition.(bounds, addr) }
+			}
 		};
 
 		if (that.isKindOf(Window)) {
