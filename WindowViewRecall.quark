@@ -4,15 +4,13 @@
         author: "scott@artificia.org",
      copyright: "Frank Scott Carver, 2015",
        license: "MIT",
-       version: "1.0.1",
+       version: "1.0.2",
         schelp: "Window:autoRememberPosition",
           test: "Test/WindowViewRecall_unittest.scd",
            url: "https://github.com/scztt/WindowViewRecall.quark",
   dependencies: [
-              		"Collapse",
-              	] ++ ((Main.scVersionMajor <= 3) && (Main.scVersionMinor < 9)).if([
-					"UnitTesting@2a8f5e18aaa7cd25968ec094bbfa75a7fb3094b6"
-				]),
+              		"Collapse"
+                ],
   isCompatible: true ,
          since: "2015"
 )
